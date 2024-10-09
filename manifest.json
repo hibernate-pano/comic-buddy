@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "AI 漫画翻译助手",
+  "version": "1.2",
+  "description": "使用 AI 智能翻译外文漫画",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "host_permissions": ["https://api.openai.com/"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["tesseract.min.js", "content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["worker.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
